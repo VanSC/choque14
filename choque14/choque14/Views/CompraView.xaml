@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="choque14.Views.CompraView">
+    <ContentPage.Content>
+        <StackLayout Padding="30">
+            <Label Text="COMPRA" FontSize="Title"
+                   FontAttributes="Bold"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+            <Label Text="Cliente:" />
+            <Entry Text="{Binding Client}"></Entry>
+            <Label Text="Vendedor" />
+            <Entry Text="{Binding Seller}"></Entry>
+            <Label Text="Total" />
+            <Entry Text="{Binding Total}"></Entry>
+            <Label Text="Fecha" />
+            <DatePicker MinimumDate="12/11/2010"
+            MaximumDate="12/15/2023"
+            Date="{Binding SelectDate}" />
+            <Button Text="Save" Command="{Binding InsertCommand}" BackgroundColor="DarkBlue" TextColor="White" FontAttributes="Bold" CornerRadius="20"></Button>
+
+            <Entry Placeholder="Filter" Text="{Binding Filter}" HorizontalOptions="FillAndExpand"></Entry>
+            <Button Text="ShowByText" Command="{Binding SearchCommand}" BackgroundColor="DarkGreen" TextColor="White" FontAttributes="Bold" CornerRadius="20"></Button>
+            <Label Text="Lista de registros: " FontSize="Medium" FontAttributes="Bold"></Label>
+            <ListView x:Name="LvPeople" ItemsSource="{Binding Compra}" BackgroundColor="LightGray">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal" Padding="15">
+                                <Label Text="{Binding client}" FontSize="Caption"></Label>
+                                <Label Text="{Binding total}" FontSize="Caption"></Label>
+                                <Label Text="{Binding seller}" FontSize="Caption"></Label>
+                                <Label Text="{Binding date}" FontSize="Caption"></Label>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
